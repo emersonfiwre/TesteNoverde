@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.emersonfiwre.testenoverde.R
-import com.emersonfiwre.testenoverde.viewmodel.LoanViewModel
+import com.emersonfiwre.testenoverde.service.constants.LoanConstants
+import com.emersonfiwre.testenoverde.service.utils.Mask
+import kotlinx.android.synthetic.main.fragment_cnpj.*
 import kotlinx.android.synthetic.main.fragment_cnpj.view.*
-import kotlinx.android.synthetic.main.fragment_welcome.view.*
 
 class CpfFragment : Fragment(), View.OnClickListener {
     private lateinit var mViewRoot: View
@@ -23,11 +21,15 @@ class CpfFragment : Fragment(), View.OnClickListener {
     ): View? {
         // Inflate the layout for this fragment
         mViewRoot = inflater.inflate(R.layout.fragment_cnpj, container, false)
+
+        mViewRoot.edit_cpf.addTextChangedListener(Mask.mask("###.###.###-##", mViewRoot.edit_cpf))
+
         setListener()
 
         return mViewRoot
     }
-    private fun setListener(){
+
+    private fun setListener() {
         mViewRoot.button_next.setOnClickListener(this)
     }
 
@@ -36,16 +38,20 @@ class CpfFragment : Fragment(), View.OnClickListener {
         when (v?.id) {
             R.id.button_next -> {
                 //set trasaction
-                activity!!.supportFragmentManager
-                    .beginTransaction()
-                    .setCustomAnimations(
-                        android.R.anim.slide_in_left,
-                        android.R.anim.slide_out_right
-                    )
-                    .replace(R.id.container_root, AmountNeedFragment(), "TAG")
-                    .addToBackStack(null)
-                    .commit()
+                nextFragment(AmountNeedFragment.newInstance(edit_cpf.text.toString()))
             }
         }
+    }
+
+    private fun nextFragment(fragment: AmountNeedFragment) {
+        activity!!.supportFragmentManager
+            .beginTransaction()
+            .setCustomAnimations(
+                android.R.anim.slide_in_left,
+                android.R.anim.slide_out_right
+            )
+            .replace(R.id.container_root, fragment, LoanConstants.TAG.FRAG_AMOUNT)
+            .addToBackStack(null)
+            .commit()
     }
 }

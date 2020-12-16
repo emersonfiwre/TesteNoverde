@@ -20,17 +20,12 @@ class LoanViewModel(application: Application) : AndroidViewModel(application) {
     private var mLoan = MutableLiveData<LoanModel>()
     var loan: LiveData<LoanModel> = mLoan
 
-    fun applyLoan(cpf: String?, amount: Double?) {
-        if (cpf != null && amount != null) {
-            val user = UserModel().apply {
-                this.cpf = cpf
-                this.amount = amount
-            }
+    fun applyLoan(user: UserModel) {
+        if (user.cpf.isNotEmpty() && user.amount > 0.00) {
             mRepository.load(user, object : APIListener<LoanModel> {
                 override fun onSuccess(result: LoanModel) {
                     mLoan.value = result
                 }
-
                 override fun onFailure(message: String) {
                     mValidation.value = ValidationListener(message)
                 }

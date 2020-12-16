@@ -12,12 +12,13 @@
     <string name="typeit_amount">Digite o valor desejado aqui</string>
     <string name="request">Solicitar</string>
     <string name="you_approved">Uhuuu, \n Você foi aprovado!</string>
-    <string name="you_reproved">Ahhh que pena!</string>
+    <string name="you_reproved">Ahhh que pena! \n\nNão foi possível aprovar \nseu crédito :(</string>
     <string name="amount_released">Valor liberado</string>
     <string name="installment">Parcelas a pagar</string>
     <string name="first_duedate">Primeiro vencimento em</string>
     <string name="amount_below">* o valor liberado é menor do que o valor escolhido</string>
     <string name="unable_approved">Não foi possível aprovar\n seu crédito</string>
+    <string name="amount_empty">Por favor, digite um valor válido</string>
 
     <!-- Errors -->
     <string name="ERROR_UNEXPECTED">Um erro inesperado ocorreu. Tente novamente mais tarde.</string>

@@ -1,8 +1,9 @@
 package com.emersonfiwre.testenoverde.service.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-class UserModel {
+class UserModel: Serializable {
     @SerializedName("cpf")
     var cpf: String = ""
 
