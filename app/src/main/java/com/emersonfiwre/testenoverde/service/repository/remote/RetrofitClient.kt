@@ -1,4 +1,4 @@
-package com.emersonfiwre.testenoverde.service
+package com.emersonfiwre.testenoverde.service.repository.remote
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
