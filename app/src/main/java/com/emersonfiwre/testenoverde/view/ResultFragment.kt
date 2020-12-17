@@ -37,7 +37,7 @@ class ResultFragment private constructor() : Fragment() {
         mViewRoot = inflater.inflate(R.layout.fragment_result, container, false)
         mViewModel = ViewModelProvider(this).get(LoanViewModel::class.java)
 
-        val mUser = arguments?.getSerializable(LoanConstants.ARGUMENTS.CPF) as UserModel
+        val mUser = arguments!!.getSerializable(LoanConstants.ARGUMENTS.USER) as UserModel
 
         //Criando observadores
         observe()

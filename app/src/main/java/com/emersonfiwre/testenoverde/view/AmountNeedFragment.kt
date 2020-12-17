@@ -41,7 +41,7 @@ class AmountNeedFragment private constructor() : Fragment(), View.OnClickListene
         // Inflate the layout for this fragment
         mViewRoot = inflater.inflate(R.layout.fragment_amount_need, container, false)
         mCpf = arguments?.getString(LoanConstants.ARGUMENTS.CPF).toString()
-        mViewRoot.edit_amount.addTextChangedListener(Mask.mask("###.###,##", mViewRoot.edit_amount))
+        mViewRoot.edit_amount.addTextChangedListener(Mask.mask("######.##", mViewRoot.edit_amount))
 
         setListener()
 
