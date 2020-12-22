@@ -28,7 +28,7 @@ class RetrofitClient private constructor() {
                                 .newBuilder()
                                 .addHeader(
                                     LoanConstants.HEADER.AUTHORIZATION,
-                                    "Bearer yourcustomtoken"
+                                    LoanConstants.HEADER.VALUE
                                 )
                                 .build()
                         return chain.proceed(request)
